@@ -10,20 +10,20 @@
    
   tasks:
 
-   - name: Create users for lab
-     microsoft.ad.user:
-      identity: "{{ item }}"
-      password: "{{ user_password }}"
-      state: present
-      path: "{{ ou_path }}"
-      groups:
-       set:
-        - Domain Users
-     loop:
-       - Sean
-       - Colin
-       - Anshul
-       - Hicham
-       - Leo
-       - Roger
-       - Nuno
+   # - name: Create users for lab
+   #   microsoft.ad.user:
+   #    identity: "{{ item }}"
+   #    password: "{{ user_password }}"
+   #    state: present
+   #    path: "{{ ou_path }}"
+   #    groups:
+   #     set:
+   #      - Domain Users
+   #   loop:
+   #     - Sean
+   #     - Colin
+   #     - Anshul
+   #     - Hicham
+   #     - Leo
+   #     - Roger
+   #     - Nuno
