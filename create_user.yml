@@ -1,7 +1,7 @@
 ---
 - 
   name: Manage users in our Org
-  hosts: windows_servers
+  hosts: windows
   gather_facts: false
 
   vars: 
