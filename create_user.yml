@@ -1,0 +1,38 @@
+---
+- 
+  hosts: windows_servers
+  gather_facts: false
+
+  vars: 
+   ou_path:
+   user_identity:
+   user_password:
+   
+  tasks:
+ 
+   - name: Create user with correct OU defined
+     microsoft.ad.user:
+      identity: "{{ user_identity }}"
+      password: "{{ user_password }}"
+      state: present
+      path: "{{ ou_path }}"
+      groups:
+       set:
+        - Domain Users
+     tags:
+       - add_user
+       - never
+
+   - name: Create an admin user with correct OU defined
+     microsoft.ad .user:
+      identity: "{{ user_identity }}"
+      password: "{{ user_password }}"
+      state: present
+      path: "{{ ou_path }}"
+      groups:
+       set:
+        - Domain Users
+        - Domain Admins
+     tags:
+       - add_domain
+       - never
