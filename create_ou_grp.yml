@@ -4,17 +4,21 @@
   hosts: windows
   gather_facts: false
 
+  vars:
+   org_unit: 
+   group_name: 
+
   tasks:
 
-   - name: Ensure Ansible Organizational Unit is available
+   - name: Create Organizational Unit
      microsoft.ad.ou:
-      name: Ansible
+      name: "{{ org_unit }}"
       state: present
       protect_from_deletion: true
 
-   - name: Create a group in a custom path
+   - name: Create a group in an OU
      microsoft.ad.group:
-      name: DevOps
+      name: "{{ group_name }}"
       scope: global
-      path: OU=Ansible,DC=instruqt,DC=ansible
+      path: OU="{{ org_unit }}",DC=instruqt,DC=ansible
       state: present
