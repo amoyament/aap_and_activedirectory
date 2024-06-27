@@ -12,7 +12,7 @@
    - name: Ensure local Administrator account has a password
      ansible.windows.win_user:
         name: "{{ username }}"
-        passwod: "{{ user_password }}"
+        password: "{{ user_password }}"
 
    - name: Promote system to a domain Controller
      microsoft.ad.domain:
