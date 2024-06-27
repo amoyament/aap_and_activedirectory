@@ -5,7 +5,7 @@
   gather_facts: false
 
   vars: 
-   ou_path: OU=Ansible,DC=instruqt,DC=ansible
+   ou_path: 
    user_password: "{{ lookup('password', '/dev/null chars=ascii_uppercase,ascii_lowercase,digits,punctuation, length=20') }}"
    
   tasks:
