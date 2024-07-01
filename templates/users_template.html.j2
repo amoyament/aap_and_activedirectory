@@ -58,8 +58,8 @@
         <table>
             <thead>
                 <tr>
-                    <th>Display Name</th>
-                    <th>Email Address</th>
+                    <th>First Name</th>
+                    <th>Surname</th>
                     <th>Username</th>
                     <th>Groups</th>
                     <th>Account Locked</th>
@@ -68,8 +68,8 @@
             <tbody>
         {% for user in users %}
         <tr>
-            <td>{{ user.DisplayName }}</td>
-            <td>{{ user.EmailAddress }}</td>
+            <td>{{ user.GivenName }}</td>
+            <td>{{ user.Surname }}</td>
             <td>{{ user.SamAccountName }}</td>
             <td>{{ user.Groups }}</td>
             <td>{{ user.LockedOut }}</td>
