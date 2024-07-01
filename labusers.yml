@@ -5,25 +5,43 @@
   gather_facts: false
 
   vars: 
-   ou_path: 
+   ou_path: OU=Ansible,DC=instruqt,DC=ansible
    user_password: "{{ lookup('password', '/dev/null chars=ascii_uppercase,ascii_lowercase,digits,punctuation, length=20') }}"
+   users_list:
+    sean:
+     firstname: Sean
+     surname: cavanaugh
+    colin:
+     firstname: Colin
+     surname: Mcnaughton
+    anshul:
+     firstname: Anshul
+     surname: Behl
+    hicham:
+     firstname: Hicham
+     surname: Mourad
+    leo:
+     firstname: Leo
+     surname: Gallego
+    roger:
+     firstname: Roger
+     surname: Lopez
+    nuno:
+     firstname: Nuno
+     surname: Martins
    
   tasks:
 
    # - name: Create users for lab
    #   microsoft.ad.user:
-   #    identity: "{{ item }}"
+   #    identity: "{{ item.key }}"
    #    password: "{{ user_password }}"
+   #    firstname: "{{ item.value.firstname }}"
+   #    surname: "{{ item.value.surname }}"
    #    state: present
    #    path: "{{ ou_path }}"
    #    groups:
    #     set:
    #      - Domain Users
-   #   loop:
-   #     - Sean
-   #     - Colin
-   #     - Anshul
-   #     - Hicham
-   #     - Leo
-   #     - Roger
-   #     - Nuno
+   #   loop: "{{ users_list | dict2items }}"
+
