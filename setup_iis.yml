@@ -7,7 +7,7 @@
   vars:
     iis_sites:
       - name: 'Active Directory Report'
-        port: '80'
+        port: '8080'
         path: 'C:\sites\ad_report'
 
   tasks:
