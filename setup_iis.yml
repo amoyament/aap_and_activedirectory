@@ -1,0 +1,18 @@
+---
+- name: Configure IIS on Windows
+  hosts: windows
+  gather_facts: no
+
+  tasks:
+
+    - name: Install IIS
+      ansible.windows.win_feature:
+        name: Web-Server
+        state: present
+
+  handlers:
+    - name: restart iis service
+      ansible.windows.win_service:
+        name: W3Svc
+        state: restarted
+        start_mode: auto
