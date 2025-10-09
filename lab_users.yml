@@ -1,6 +1,5 @@
 ---
--
-  name: Adding users for lab
+- name: Adding users for lab
   hosts: windows
   gather_facts: false
 
@@ -10,10 +9,7 @@
     users_list:
       sean:
         firstname: Sean
-        surname: cavanaugh
-      colin:
-        firstname: Colin
-        surname: Mcnaughton
+        surname: Cavanaugh
       anshul:
         firstname: Anshul
         surname: Behl
@@ -29,18 +25,23 @@
       nuno:
         firstname: Nuno
         surname: Martins
+      alex:
+        firstname: Alex
+        surname: Walczyk
+      aubrey:
+        firstname: Aubrey
+        surname: Trotter
 
   tasks:
-
-   # - name: Create users for lab
-   #   microsoft.ad.user:
-   #    identity: "{{ item.key }}"
-   #    password: "{{ user_password }}"
-   #    firstname: "{{ item.value.firstname }}"
-   #    surname: "{{ item.value.surname }}"
-   #    state: present
-   #    path: "{{ ou_path }}"
-   #    groups:
-   #     set:
-   #      - Domain Users
-   #   loop: "{{ users_list | dict2items }}"
+    # - name: Create users for lab
+    #   microsoft.ad.user:
+    #     identity: "{{ item.key }}"
+    #     password: "{{ user_password }}"
+    #     firstname: "{{ item.value.firstname }}"
+    #     surname: "{{ item.value.surname }}"
+    #     state: present
+    #     path: "{{ ou_path }}"
+    #     groups:
+    #       set:
+    #         - Domain Users
+    #   loop: "{{ users_list | dict2items }}"

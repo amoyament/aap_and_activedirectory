@@ -1,24 +1,22 @@
 ---
-- 
-  name: Create Organizational Units and Group for Ansible Admins
+- name: Create Organizational Units and Group for Ansible Admins
   hosts: windows
   gather_facts: false
 
   vars:
-   org_unit: 
-   group_name: 
+    org_unit:
+    group_name:
 
   tasks:
+    # - name: Create Organizational Unit
+    #   microsoft.ad.ou:
+    #     name: "{{ org_unit }}"
+    #     state: present
+    #     protect_from_deletion: true
 
-   # - name: Create Organizational Unit
-   #   microsoft.ad.ou:
-   #    name: "{{ org_unit }}"
-   #    state: present
-   #    protect_from_deletion: true
-
-   # - name: Create a group in an OU
-   #   microsoft.ad.group:
-   #    name: "{{ group_name }}"
-   #    scope: global
-   #    path: OU="{{ org_unit }}",DC=instruqt,DC=ansible
-   #    state: present
+    # - name: Create a group in an OU
+    #   microsoft.ad.group:
+    #     name: "{{ group_name }}"
+    #     scope: global
+    #     path: OU="{{ org_unit }}",DC=instruqt,DC=ansible
+    #     state: present
