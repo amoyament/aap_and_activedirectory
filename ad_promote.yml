@@ -1,6 +1,5 @@
 ---
-- 
-  name: Configure Windows Server as Domain Controller
+- name: Configure Windows Server as Domain Controller
   hosts: windows
   gather_facts: false
 
@@ -8,21 +7,20 @@
     - windows_auth
 
   tasks:
-
-   - name: Ensure local Administrator account has a password
-     ansible.windows.win_user:
+    - name: Ensure local Administrator account has a password
+      ansible.windows.win_user:
         name: "{{ username }}"
         password: "{{ user_password }}"
 
-   - name: Promote system to a domain Controller
-     microsoft.ad.domain:
-      dns_domain_name: instruqt.ansible
-      safe_mode_password: "{{ safe_password }}"
-      domain_mode: Win2012R2
-      domain_netbios_name: ANSIBLE
-      forest_mode: Win2012R2
-     register: domain_install
+    - name: Promote system to a domain Controller
+      microsoft.ad.domain:
+        dns_domain_name: instruqt.ansible
+        safe_mode_password: "{{ safe_password }}"
+        domain_mode: Win2012R2
+        domain_netbios_name: ANSIBLE
+        forest_mode: Win2012R2
+      register: domain_install
 
-   - name: Reboot system after promoting to domain Controller
-     ansible.windows.win_reboot:
-     when: domain_install.reboot_required
+    - name: Reboot system after promoting to domain Controller
+      ansible.windows.win_reboot:
+      when: domain_install.reboot_required

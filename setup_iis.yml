@@ -1,8 +1,7 @@
-
 ---
 - name: Configure IIS on Windows
   hosts: windows
-  gather_facts: no
+  gather_facts: false
 
   vars:
     iis_sites:
@@ -11,7 +10,6 @@
         path: 'C:\sites\ad_report'
 
   tasks:
-
     - name: Install IIS
       ansible.windows.win_feature:
         name: Web-Server

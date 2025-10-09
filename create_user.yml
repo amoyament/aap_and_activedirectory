@@ -1,53 +1,51 @@
 ---
-- 
-  name: Manage users in our Org
+- name: Manage users in our Org
   hosts: windows
   gather_facts: false
 
-  vars: 
-   ou_path: 
-   user_identity: 
-   user_password: 
-   
+  vars:
+    ou_path:
+    user_identity:
+    user_password:
+
   tasks:
- 
-   - name: Create user with correct OU defined
-     microsoft.ad.user:
-      identity: "{{ user_identity }}"
-      password: "{{ user_password }}"
-      state: present
-      path: "{{ ou_path }}"
-      groups:
-       set:
-        - Domain Users
-     tags:
-       - user
-       - never
+    - name: Create user with correct OU defined
+      microsoft.ad.user:
+        identity: "{{ user_identity }}"
+        password: "{{ user_password }}"
+        state: present
+        path: "{{ ou_path }}"
+        groups:
+        set:
+          - Domain Users
+      tags:
+        - user
+        - never
 
-   - name: Create an admin user with correct OU defined
-     microsoft.ad.user:
-      identity: "{{ user_identity }}"
-      password: "{{ user_password }}"
-      state: present
-      path: "{{ ou_path }}"
-      groups:
-       set:
-        - Domain Users
-        - Domain Admins
-     tags:
-       - admin_user
-       - never
+    - name: Create an admin user with correct OU defined
+      microsoft.ad.user:
+        identity: "{{ user_identity }}"
+        password: "{{ user_password }}"
+        state: present
+        path: "{{ ou_path }}"
+        groups:
+        set:
+          - Domain Users
+          - Domain Admins
+      tags:
+        - admin_user
+        - never
 
-   - name: Create an Ansible user
-     microsoft.ad.user:
-      identity: "{{ user_identity }}"
-      password: "{{ user_password }}"
-      state: present
-      path: "{{ ou_path }}"
-      groups:
-       set:
-        - Domain Users
-        - DevOps
-     tags:
-       - ansible_user
-       - never
+    - name: Create an Ansible user
+      microsoft.ad.user:
+        identity: "{{ user_identity }}"
+        password: "{{ user_password }}"
+        state: present
+        path: "{{ ou_path }}"
+        groups:
+        set:
+          - Domain Users
+          - DevOps
+      tags:
+        - ansible_user
+        - never
