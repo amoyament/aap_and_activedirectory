@@ -16,8 +16,8 @@
         state: present
         path: "{{ ou_path }}"
         groups:
-        set:
-          - Domain Users
+          set:
+            - Domain Users
       tags:
         - user
         - never
@@ -29,9 +29,9 @@
         state: present
         path: "{{ ou_path }}"
         groups:
-        set:
-          - Domain Users
-          - Domain Admins
+          set:
+            - Domain Users
+            - Domain Admins
       tags:
         - admin_user
         - never
@@ -43,9 +43,9 @@
         state: present
         path: "{{ ou_path }}"
         groups:
-        set:
-          - Domain Users
-          - DevOps
+          set:
+            - Domain Users
+            - DevOps
       tags:
         - ansible_user
         - never
