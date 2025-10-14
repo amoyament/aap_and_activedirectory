@@ -39,6 +39,7 @@
     #     password: "{{ user_password }}"
     #     firstname: "{{ item.value.firstname }}"
     #     surname: "{{ item.value.surname }}"
+    #     name: "{{ item.value.firstname }} {{ item.value.surname }}"    
     #     state: present
     #     path: "{{ ou_path }}"
     #     groups:
