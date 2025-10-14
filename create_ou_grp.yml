@@ -18,5 +18,5 @@
     #   microsoft.ad.group:
     #     name: "{{ group_name }}"
     #     scope: global
-    #     path: OU="{{ org_unit }}",DC=instruqt,DC=ansible
+    #     path: OU="{{ org_unit }}",DC=active-directory-lab,DC=ansible
     #     state: present
