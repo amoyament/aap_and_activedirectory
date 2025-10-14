@@ -16,23 +16,22 @@
       ansible.windows.win_shell: |
         Import-Module ActiveDirectory
         Get-ADUser -Filter * -Property GivenName, Surname, SamAccountName, MemberOf, LockedOut |
-        Select-Object GivenName, Surname, SamAccountName, @{Name="Groups";Expression={(Get-ADUser -Identity $_.SamAccountName -Property MemberOf | Select-Object -ExpandProperty MemberOf | Get-ADGroup | Select-Object -ExpandProperty Name) -join ", "}}, LockedOut |
-        # Select-Object \
-        #   GivenName, \
-        #   Surname, \
-        #   SamAccountName, \
-        #   @{ \
-        #     Name = "Groups"; \
-        #     Expression = { \
-        #       ( \
-        #         Get-ADUser -Identity $_.SamAccountName -Property MemberOf | \
-        #         Select-Object -ExpandProperty MemberOf | \
-        #         Get-ADGroup | \
-        #         Select-Object -ExpandProperty Name \
-        #       ) -join ", " \
-        #     } \
-        #   }, \
-        #   LockedOut |
+        Select-Object \
+          GivenName, \
+          Surname, \
+          SamAccountName, \
+          @{ \
+            Name = "Groups"; \
+            Expression = { \
+              ( \
+                Get-ADUser -Identity $_.SamAccountName -Property MemberOf | \
+                Select-Object -ExpandProperty MemberOf | \
+                Get-ADGroup | \
+                Select-Object -ExpandProperty Name \
+              ) -join ", " \
+            } \
+          }, \
+          LockedOut |
         ConvertTo-Json
       register: ad_users
 
